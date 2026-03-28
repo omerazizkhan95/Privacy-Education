@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<!-- Save this file as: index.html -->
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>privacy.education</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     min-height: 100vh;
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -15,398 +7,96 @@
     color: #fff;
     overflow-x: hidden;
   }
-
-  /* Ambient orbs */
-  .orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.18;
-    pointer-events: none;
-    z-index: 0;
-  }
+  .orb { position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.18; pointer-events: none; z-index: 0; }
   .orb1 { width: 500px; height: 500px; background: #4f46e5; top: -100px; left: -100px; }
   .orb2 { width: 400px; height: 400px; background: #7c3aed; bottom: 10%; right: -80px; }
   .orb3 { width: 300px; height: 300px; background: #2563eb; top: 50%; left: 40%; }
-
-  /* Glass mixin */
-  .glass {
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 20px;
-  }
-
-  .glass-strong {
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 24px;
-  }
-
-  /* Layout */
+  .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; }
+  .glass-strong { background: rgba(255,255,255,0.08); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255,255,255,0.15); border-radius: 24px; }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-
-  /* Nav */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 18px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(5,13,31,0.6);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .logo {
-    font-size: 17px;
-    font-weight: 600;
-    letter-spacing: -0.3px;
-    color: #fff;
-  }
-
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(5,13,31,0.6); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .logo { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; color: #fff; }
   .logo span { color: #818cf8; }
-
   .nav-links { display: flex; gap: 32px; align-items: center; }
-  .nav-links a {
-    font-size: 14px;
-    color: rgba(255,255,255,0.6);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  .nav-links a { font-size: 14px; color: rgba(255,255,255,0.6); text-decoration: none; }
   .nav-links a:hover { color: #fff; }
-
-  .nav-cta {
-    background: rgba(99,102,241,0.2);
-    border: 1px solid rgba(99,102,241,0.4);
-    color: #a5b4fc !important;
-    padding: 8px 18px;
-    border-radius: 8px;
-    font-size: 13px !important;
-    transition: background 0.2s !important;
-  }
-  .nav-cta:hover { background: rgba(99,102,241,0.35) !important; color: #fff !important; }
-
-  /* Hero */
-  .hero {
-    padding: 160px 0 100px;
-    text-align: center;
-  }
-
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(99,102,241,0.15);
-    border: 1px solid rgba(99,102,241,0.3);
-    padding: 6px 16px;
-    border-radius: 100px;
-    font-size: 12px;
-    color: #a5b4fc;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 32px;
-  }
-
-  .badge-dot {
-    width: 6px; height: 6px;
-    background: #818cf8;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  h1 {
-    font-size: clamp(38px, 6vw, 68px);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -1.5px;
-    margin-bottom: 24px;
-  }
-
+  .nav-cta { background: rgba(99,102,241,0.2); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc !important; padding: 8px 18px; border-radius: 8px; font-size: 13px !important; }
+  .hero { padding: 160px 0 100px; text-align: center; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); padding: 6px 16px; border-radius: 100px; font-size: 12px; color: #a5b4fc; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 32px; }
+  .badge-dot { width: 6px; height: 6px; background: #818cf8; border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 700; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 24px; }
   h1 .accent { color: #818cf8; }
-
-  .hero-sub {
-    font-size: 18px;
-    color: rgba(255,255,255,0.55);
-    max-width: 580px;
-    margin: 0 auto 48px;
-    line-height: 1.7;
-  }
-
+  .hero-sub { font-size: 18px; color: rgba(255,255,255,0.55); max-width: 580px; margin: 0 auto 48px; line-height: 1.7; }
   .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-
-  .btn-primary {
-    background: linear-gradient(135deg, #6366f1, #4f46e5);
-    border: none;
-    color: #fff;
-    padding: 14px 28px;
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    transition: opacity 0.2s, transform 0.15s;
-    display: inline-block;
-  }
-  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
-
-  .btn-secondary {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.8);
-    padding: 14px 28px;
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.2s;
-    display: inline-block;
-  }
-  .btn-secondary:hover { background: rgba(255,255,255,0.12); }
-
-  /* Stats bar */
-  .stats {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    padding: 40px;
-    margin: 0 auto 100px;
-    max-width: 700px;
-    flex-wrap: wrap;
-  }
-
+  .btn-primary { background: linear-gradient(135deg, #6366f1, #4f46e5); border: none; color: #fff; padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; }
+  .btn-secondary { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; }
+  .stats { display: flex; justify-content: center; gap: 60px; padding: 40px; margin: 0 auto 100px; max-width: 700px; flex-wrap: wrap; }
   .stat-item { text-align: center; }
   .stat-num { font-size: 32px; font-weight: 700; color: #818cf8; letter-spacing: -1px; }
   .stat-label { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 4px; }
-
-  /* Section */
   .section { padding: 80px 0; }
-
-  .section-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #818cf8;
-    margin-bottom: 12px;
-    font-weight: 500;
-  }
-
-  .section-title {
-    font-size: clamp(28px, 4vw, 42px);
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin-bottom: 16px;
-    line-height: 1.2;
-  }
-
-  .section-sub {
-    font-size: 16px;
-    color: rgba(255,255,255,0.5);
-    max-width: 520px;
-    line-height: 1.7;
-    margin-bottom: 56px;
-  }
-
-  /* Offering cards */
+  .section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #818cf8; margin-bottom: 12px; font-weight: 500; }
+  .section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 700; letter-spacing: -1px; margin-bottom: 16px; line-height: 1.2; }
+  .section-sub { font-size: 16px; color: rgba(255,255,255,0.5); max-width: 520px; line-height: 1.7; margin-bottom: 56px; }
   .offerings { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 100px; }
-
   @media (max-width: 700px) { .offerings { grid-template-columns: 1fr; } }
-
-  .offering-card {
-    padding: 40px 36px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s;
-  }
+  .offering-card { padding: 40px 36px; position: relative; overflow: hidden; transition: transform 0.2s; }
   .offering-card:hover { transform: translateY(-4px); }
-
-  .card-tag {
-    display: inline-block;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 100px;
-    margin-bottom: 24px;
-  }
-
+  .card-tag { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; padding: 4px 12px; border-radius: 100px; margin-bottom: 24px; }
   .tag-public { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.25); }
   .tag-enterprise { background: rgba(168,85,247,0.15); color: #c084fc; border: 1px solid rgba(168,85,247,0.25); }
-
   .offering-card h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px; }
   .offering-card p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 28px; }
-
   .feature-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
-  .feature-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 14px;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.5;
-  }
-
+  .feature-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5; }
   .check-public { color: #4ade80; font-size: 15px; flex-shrink: 0; margin-top: 1px; }
   .check-enterprise { color: #c084fc; font-size: 15px; flex-shrink: 0; margin-top: 1px; }
-
-  .btn-public {
-    background: rgba(34,197,94,0.15);
-    border: 1px solid rgba(34,197,94,0.3);
-    color: #4ade80;
-    padding: 12px 22px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.2s;
-  }
-  .btn-public:hover { background: rgba(34,197,94,0.25); }
-
-  .btn-enterprise {
-    background: rgba(168,85,247,0.15);
-    border: 1px solid rgba(168,85,247,0.3);
-    color: #c084fc;
-    padding: 12px 22px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.2s;
-  }
-  .btn-enterprise:hover { background: rgba(168,85,247,0.25); }
-
-  /* Card accent line */
-  .card-public::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #22c55e, transparent);
-  }
-  .card-enterprise::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #a855f7, transparent);
-  }
-
-  /* Mission strip */
-  .mission {
-    text-align: center;
-    padding: 70px 40px;
-    margin-bottom: 80px;
-  }
-
-  .mission blockquote {
-    font-size: clamp(20px, 3vw, 30px);
-    font-weight: 600;
-    line-height: 1.5;
-    letter-spacing: -0.5px;
-    color: rgba(255,255,255,0.9);
-    max-width: 760px;
-    margin: 0 auto 24px;
-  }
-
+  .btn-public { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); color: #4ade80; padding: 12px 22px; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; }
+  .btn-enterprise { background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3); color: #c084fc; padding: 12px 22px; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; }
+  .card-public::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #22c55e, transparent); }
+  .card-enterprise::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #a855f7, transparent); }
+  .mission { text-align: center; padding: 70px 40px; margin-bottom: 80px; }
+  .mission blockquote { font-size: clamp(20px, 3vw, 30px); font-weight: 600; line-height: 1.5; letter-spacing: -0.5px; color: rgba(255,255,255,0.9); max-width: 760px; margin: 0 auto 24px; }
   .mission blockquote span { color: #818cf8; }
-
-  .mission-attr {
-    font-size: 13px;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.5px;
-  }
-
-  /* CTA */
-  .cta-section {
-    text-align: center;
-    padding: 80px 40px;
-    margin-bottom: 60px;
-  }
-
+  .mission-attr { font-size: 13px; color: rgba(255,255,255,0.35); letter-spacing: 0.5px; }
+  .cta-section { text-align: center; padding: 80px 40px; margin-bottom: 60px; }
   .cta-section h2 { font-size: clamp(26px, 4vw, 42px); font-weight: 700; margin-bottom: 16px; letter-spacing: -1px; }
   .cta-section p { color: rgba(255,255,255,0.5); font-size: 16px; margin-bottom: 36px; }
-
-  /* Footer */
-  footer {
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 32px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    z-index: 1;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  footer .logo { font-size: 15px; }
+  footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1; flex-wrap: wrap; gap: 16px; }
   footer p { font-size: 13px; color: rgba(255,255,255,0.3); }
 </style>
-</head>
-<body>
 
-<!-- Ambient orbs -->
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
 <div class="orb orb3"></div>
 
-<!-- Nav -->
 <nav>
   <div class="logo">privacy<span>.education</span></div>
-  <div class="nav-links">
-   <p><a href="mailto:omerazizk@gmail.com">Get Early Access</a></p>
-  </div>
 </nav>
 
-<!-- Hero -->
 <div class="container">
   <section class="hero">
-    <div class="badge"><div class="badge-dot"></div> Now in active testing</div>
+    <div class="badge"><div class="badge-dot"></div> Now in active testing &nbsp;·&nbsp; General availability coming soon</div>
     <h1>Privacy is a right.<br><span class="accent">Teach it like one.</span></h1>
     <p class="hero-sub">privacy.education empowers K-12 students, underrepresented women, and the builders of tomorrow to navigate, understand, and protect their digital rights.</p>
+    <div class="hero-actions">
+        <a href="mailto:omerazizk@gmail.com" class="btn-primary">Explore for Schools</a>
+      <a href="#" class="btn-secondary">Enterprise Solutions</a>
+    </div>
   </section>
 
-  <!-- Stats -->
   <div class="stats glass">
-    <div class="stat-item">
-      <div class="stat-num">85%</div>
-      <div class="stat-label">of G20 GDP at risk from digital illiteracy</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">$400B</div>
-      <div class="stat-label">global EdTech market by 2028</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">1 in 3</div>
-      <div class="stat-label">youth cannot identify data exploitation</div>
-    </div>
+    <div class="stat-item"><div class="stat-num">85%</div><div class="stat-label">of G20 GDP at risk from digital illiteracy</div></div>
+    <div class="stat-item"><div class="stat-num">$400B</div><div class="stat-label">global EdTech market by 2028</div></div>
+    <div class="stat-item"><div class="stat-num">1 in 3</div><div class="stat-label">youth cannot identify data exploitation</div></div>
   </div>
 
-  <!-- Offerings -->
   <section class="section">
     <div class="section-label">What we offer</div>
     <h2 class="section-title">Two solutions.<br>One mission.</h2>
     <p class="section-sub">Whether you are educating the next generation or building the next platform — privacy.education has a solution designed for you.</p>
-
     <div class="offerings">
-
-      <!-- Public Card -->
       <div class="offering-card glass-strong card-public">
         <div class="card-tag tag-public">Public</div>
         <h3>For Students & Communities</h3>
@@ -419,43 +109,33 @@
         </ul>
         <a href="mailto:omerazizk@gmail.com?subject=Public%20Access%20Request" class="btn-public">Get Early Access →</a>
       </div>
-
-      <!-- Enterprise Card -->
       <div class="offering-card glass-strong card-enterprise">
         <div class="card-tag tag-enterprise">Enterprise</div>
-        <h3>For Builders & Developers</h3>
-        <p>The next frontier of privacy.education — helping engineering teams and developers build technology that is ethical, privacy-preserving, and trustworthy by design.</p>
+        <h3><a href="/for-builders-and-developers" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(168,85,247,0.4);padding-bottom:2px;">For Builders & Developers</a></h3>
+        <p>Helping engineering teams and developers build technology that is ethical, privacy-preserving, and trustworthy by design.</p>
         <ul class="feature-list">
           <li><span class="check-enterprise">✦</span> Privacy-by-design frameworks and coding best practices</li>
           <li><span class="check-enterprise">✦</span> AI governance guardrails for engineering teams</li>
           <li><span class="check-enterprise">✦</span> Ethical development training integrated into engineering workflows</li>
           <li><span class="check-enterprise">✦</span> Compliance-ready tools aligned with GDPR, PIPEDA, and global standards</li>
         </ul>
-        <a href="mailto:omerazizk@gmail.com?subject=Join%20The%20Waitlist" class="btn-public">Join The Waitlist →</a>
       </div>
-
     </div>
   </section>
 
-  <!-- Mission Quote -->
   <div class="mission glass">
     <blockquote>"We have built faster than we have educated. <span>privacy.education</span> exists to close that gap — for everyone the digital world was never designed to protect."</blockquote>
     <p class="mission-attr">— Omer, Founder · privacy.education</p>
   </div>
 
-  <!-- CTA -->
   <div class="cta-section glass">
     <h2>The digital world needs<br>a more informed generation.</h2>
     <p>Join the movement to make privacy education a right — not a privilege.</p>
-    <a href="mailto:omerazizk@gmail.com?subject=Early%20Access%20Request" class="btn-public">Get Early Access →</a>
+            <a href="mailto:omerazizk@gmail.com" class="btn-primary">Get Early Access</a>
   </div>
 </div>
 
-<!-- Footer -->
 <footer>
   <div class="logo">privacy<span style="color:#818cf8">.education</span></div>
   <p>© 2025 privacy.education · Built in Canada · All rights reserved</p>
 </footer>
-
-</body>
-</html>
