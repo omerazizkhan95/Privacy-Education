@@ -1,4 +1,13 @@
-<style> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="privacy.education — empowering K-12 students and underrepresented women to understand and protect their digital rights.">
+<title>privacy.education</title>
+</head>
+<body>
+<style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { min-height: 100vh; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #0a0a1a 0%, #0d1b3e 40%, #0a1628 70%, #050d1f 100%); color: #fff; overflow-x: hidden; }
   .orb { position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.18; pointer-events: none; z-index: 0; }
@@ -31,8 +40,8 @@
   .section-title { font-size: clamp(24px, 5vw, 42px); font-weight: 700; letter-spacing: -1px; margin-bottom: 16px; line-height: 1.2; }
   .section-sub { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 520px; line-height: 1.7; margin-bottom: 40px; }
 
-  .offerings { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 60px; }
-  @media (min-width: 700px) { .offerings { grid-template-columns: 1fr 1fr; } }
+  .offerings { display: grid; grid-template-columns: 1fr !important; gap: 20px; margin-bottom: 60px; }
+  @media (min-width: 700px) { .offerings { grid-template-columns: 1fr 1fr !important; } }
 
   .offering-card { padding: 32px 24px; position: relative; overflow: hidden; transition: transform 0.2s; }
   .offering-card:hover { transform: translateY(-4px); }
@@ -131,3 +140,5 @@
   <div class="logo">privacy<span style="color:#818cf8">.education</span></div>
   <p>© 2025 privacy.education · Built in Canada · All rights reserved</p>
 </footer>
+</body>
+</html>
